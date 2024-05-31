@@ -6,6 +6,7 @@ const makePurchaseBtn=document.getElementById("make-purchase-btn")
 const applyBtn=document.getElementById("applybtn")
 const discountCodeInput = document.getElementById("input");
 const homeButton=document.getElementById("homebtn")
+var total=document.getElementById("total")
 
 accessoryName("card1","name1", "price1",cartContainer)
 accessoryName("card2","name2", "price2",cartContainer)
@@ -25,6 +26,7 @@ function accessoryName(cardNo,cardName,cardPrice, cartContainer) {
         cartContainer.appendChild(p)
         count++;    
         totalPrice.innerText=parseFloat(totalPrice.innerText)+parseFloat(price)
+        total.innerText=totalPrice.innerText
         updatePurchaseBtn(totalPrice);
         updateApplyBtn(totalPrice);
         
@@ -58,7 +60,6 @@ discountCodeInput.addEventListener('input', function(event) {
 applyBtn.addEventListener('click',function(event){
     var discount=document.getElementById("discount")
     discount.innerText=parseFloat(totalPrice.innerText) *20/100
-    var total=document.getElementById("total")
     total.innerText=totalPrice.innerText-discount.innerText
 })
 
